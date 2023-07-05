@@ -24,5 +24,14 @@ public class MainController {
         return userRepository.findAll();
     }
 
+    @GetMapping(path = "/get")
+    public @ResponseBody User getUserByID(@RequestParam int id){
+       return userRepository.findById(id).get();
+    }
 
+    @GetMapping(path = "/delete")
+    public @ResponseBody String deleteUserByID(@RequestParam int id){
+        userRepository.deleteById(id);
+        return "Success";
+    }
 }
